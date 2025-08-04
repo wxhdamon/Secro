@@ -1,0 +1,99 @@
+/*/frontend/static/styles.css*/
+/* Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Orbitron', monospace;
+    background: radial-gradient(ellipse at center, #0f0f1b 0%, #06060d 100%);
+    color: #00ffcc;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #00ffcc33;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    color: #00ffe0;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #ccccff;
+    margin-top: 0.5rem;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Button */
+button {
+    background: linear-gradient(to right, #00ffe0, #007777);
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffe0;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ffe0;
+}
+
+/* Scan output */
+.result-box {
+    margin-top: 2rem;
+    background-color: #111122;
+    border: 1px solid #00ffcc55;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 80%;
+    max-width: 800px;
+    height: 300px;
+    overflow-y: auto;
+    font-family: monospace;
+    color: #00ffcc;
+    white-space: pre-wrap;
+    box-shadow: 0 0 15px #00ffcc33;
+}
+
+/* Scan status */
+.status {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #ffaa00;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid #00ffcc33;
+    color: #6666aa;
+}

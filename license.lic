@@ -1,0 +1,10 @@
+{
+    "customer": "Acme Corp",
+    "mac": "00:1A:2B:3C:4D:5E",
+    "expires": "2026-01-01",
+    "features": [
+        "scanner",
+        "parser"
+    ],
+    "signature": "ZoeQzuLqr3rA8P9ysU1XmdX0Chb2Sv8hKzdybploKU6NscqZ3ZVyJLI7e7WTIGEFiEZCt+OM7qev8qGPEswPGVuCWR8e6EmLF6I3JtFVFq9Krz0dsb5jZHOKGDUN+baDGrK/x4/VuFSbRG4vWrOPu/n406xj8kJvj9Ybpm9oCW7re2gPn34+78M3GrVE+nLy68dWjsnfH13v2wiPziWbOVY0utcLtcvm+v1DEA63GRUK6DvgFu0o/5xgT/N/QKXU4jKLfrlPn71jw1TDurEqY2IDxxodGufgXiYtzOBk0yoSZu1oyrN8qj0DTonJyumgVVaW45r1Abk8FwDaz0dOQg=="
+}

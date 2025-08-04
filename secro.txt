@@ -1,0 +1,40 @@
+.
+├── backend
+│   ├── app
+│   │   ├── base.py
+│   │   ├── config.py
+│   │   ├── db.py
+│   │   ├── __init__.py
+│   │   ├── license.py
+│   │   ├── log_parser.pl
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── base.cpython-311.pyc
+│   │   │   ├── config.cpython-311.pyc
+│   │   │   ├── db.cpython-311.pyc
+│   │   │   ├── __init__.cpython-311.pyc
+│   │   │   ├── license.cpython-311.pyc
+│   │   │   ├── models.cpython-311.pyc
+│   │   │   ├── routes.cpython-311.pyc
+│   │   │   └── scanner.cpython-311.pyc
+│   │   ├── routes.py
+│   │   └── scanner.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── docker-compose.yml
+├── frontend
+│   ├── static
+│   │   ├── dashboard.js
+│   │   └── styles.css
+│   └── templates
+│       └── index.html
+├── LICENSE
+├── license.lic
+├── private.pem
+├── public.pem
+├── README.md
+├── scripts
+│   └── license_generator.py
+└── secro.txt
+
+7 directories, 30 files

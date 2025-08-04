@@ -1,0 +1,45 @@
+#/docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: 
+      context: .  # 允许访问整个项目（包含 frontend）
+      dockerfile: backend/Dockerfile # 指定Dockerfile路径
+    ports:
+      - "8080:5000"
+    environment:
+      FLASK_APP: app:create_app
+      FLASK_ENV: development
+      DATABASE_URL: postgresql://secro:secro@db:5432/secro  # Flask可读取
+    volumes:
+      - ./backend/app:/app/app
+      - ./frontend/templates:/app/templates
+      - ./frontend/static:/app/static
+      - ./scripts:/app/scripts
+      - ./private.pem:/app/private.pem
+      - ./license.lic:/app/license.lic
+      - ./public.pem:/app/public.pem
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "
+        echo 'Waiting for DB...' &&
+        sleep 5 &&
+        flask run --host=0.0.0.0
+      "
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: secro
+      POSTGRES_USER: secro
+      POSTGRES_PASSWORD: secro
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U secro"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  pgdata:

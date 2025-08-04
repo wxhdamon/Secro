@@ -1,0 +1,30 @@
+<!-- frontend/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanbox Security Platform</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SCANBOX</h1>
+            <p class="subtitle">Cyber Threat Intel & Detection Dashboard</p>
+        </header>
+
+        <main>
+            <button onclick="runScan()">⚡ Start Network Scan</button>
+            <div id="scan-status" class="status"></div>
+            <pre id="result" class="result-box">🔍 Awaiting scan...</pre>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Scanbox Security Inc.</p>
+        </footer>
+    </div>
+
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>
