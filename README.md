@@ -2,7 +2,7 @@
 
 Lightweight enterprise tool for network scanning and log analysis.
 
-# 快速开始
+#快速开始
 1. 解压后进入目录
 pip install rsa(首次)
 
@@ -16,6 +16,8 @@ python3 scripts/license_generator.py
 4. 启动服务
 docker-compose up --build
 
+5.访问页面 localhost:8080
+
 一、相关功能
 网络端口扫描器（Python）
 SSH 日志分析入侵检测（Perl）
@@ -25,17 +27,33 @@ Web 仪表盘（HTML + JS）
 Docker 一键部署
 
 二、API说明
-POST /api/scan
-参数	无需
-返回值	JSON 格式的扫描结果列表
-鉴权	自动读取 license.lic 验证签名与过期日期
+1. GET /
+描述：访问主页，返回前端页面（index.html）。
+用途：提供用户界面，包含按钮启动扫描、显示结果等。
+响应：HTML 页面
+
+2. POST /api/scan
+描述：执行一次网络端口扫描任务。
+授权校验：请求前会自动验证本地 license.lic 是否存在、合法、未过期。
+请求参数：无（V1 默认扫描 127.0.0.1 的固定端口）
+未来可扩展：支持 POST 提交自定义目标地址、端口范围等
+
+逻辑流程：
+检查 license
+执行端口扫描（scanner.py）
+将结果存入数据库（models.py > save_scan_result）
+返回扫描结果 JSON
+>响应格式（成功）：
 {
   "status": "Scan completed",
   "result": [
     {"port": 22, "status": "open"},
-    {"port": 80, "status": "closed"}
+    {"port": 80, "status": "closed"},
+    ...
   ]
 }
+>响应格式（失败或无效 license）：
+{ "error": "Invalid or expired license" }
 
 .lic 文件结构如下：
 {
