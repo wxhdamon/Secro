@@ -13,6 +13,13 @@ COPY frontend/static /app/static
 # 复制许可证及密钥
 COPY license.lic public.pem /app/
 
+
+# 安装 Python 和 Perl 依赖
+RUN apt-get update && \
+    apt-get install -y perl libjson-perl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # 安装依赖
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
@@ -24,3 +31,4 @@ ENV FLASK_ENV=development
 
 # 运行应用
 CMD ["flask", "run", "--host=0.0.0.0"]
+

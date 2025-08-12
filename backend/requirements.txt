@@ -4,3 +4,10 @@ sqlalchemy
 psycopg2-binary
 rsa
 cryptography
+
+fastapi
+uvicorn
+jinja2
+pydantic
+aiofiles
+scapy

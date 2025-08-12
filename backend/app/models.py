@@ -1,7 +1,9 @@
 #/backend/app/models.py
-from sqlalchemy import Column, Integer, JSON, DateTime
+# 文件：backend/app/models.py
+from sqlalchemy import Column, Integer, JSON, DateTime, desc
 from datetime import datetime
-from .base import Base  # 引入 Base，而非 db.py，避免循环导入
+from .base import Base
+from .db import Session
 
 class ScanResult(Base):
     __tablename__ = 'scan_results'
@@ -10,8 +12,6 @@ class ScanResult(Base):
     timestamp = Column(DateTime, default=datetime.utcnow)
 
 def save_scan_result(data):
-    """保存扫描结果到数据库"""
-    from .db import Session  # 延迟导入，避免循环引用
     session = Session()
     try:
         scan = ScanResult(result=data)
@@ -20,5 +20,12 @@ def save_scan_result(data):
     except Exception as e:
         session.rollback()
         raise e
+    finally:
+        session.close()
+
+def load_scan_history(limit=20):
+    session = Session()
+    try:
+        return session.query(ScanResult).order_by(desc(ScanResult.timestamp)).limit(limit).all()
     finally:
         session.close()

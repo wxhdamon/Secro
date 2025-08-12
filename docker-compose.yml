@@ -11,6 +11,7 @@ services:
       FLASK_APP: app:create_app
       FLASK_ENV: development
       DATABASE_URL: postgresql://secro:secro@db:5432/secro  # Flask可读取
+      DOCKER_ENV: "1" # 标记为Docker环境
     volumes:
       - ./backend/app:/app/app
       - ./frontend/templates:/app/templates
@@ -19,6 +20,8 @@ services:
       - ./private.pem:/app/private.pem
       - ./license.lic:/app/license.lic
       - ./public.pem:/app/public.pem
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       db:
         condition: service_healthy

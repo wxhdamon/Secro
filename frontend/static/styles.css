@@ -1,99 +1,147 @@
 /*/frontend/static/styles.css*/
-/* Reset */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Orbitron', monospace;
-    background: radial-gradient(ellipse at center, #0f0f1b 0%, #06060d 100%);
-    color: #00ffcc;
-}
-
-/* Layout */
-.container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+body {
+    background-color: #0f0f1f;
+    color: #00ffee;
+    font-family: 'Courier New', Courier, monospace;
     padding: 2rem;
-    box-sizing: border-box;
-}
-
-header {
-    text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #00ffcc33;
+    margin: 0;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    letter-spacing: 4px;
-    color: #00ffe0;
-    margin: 0;
+    text-align: center;
+    color: #00ffff;
+    margin-bottom: 2rem;
 }
 
-.subtitle {
-    font-size: 1rem;
-    color: #ccccff;
-    margin-top: 0.5rem;
-}
-
-/* Main content */
-main {
-    flex: 1;
+form#scan-form {
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     align-items: center;
-    padding: 2rem;
+    margin-bottom: 2rem;
 }
 
-/* Button */
-button {
-    background: linear-gradient(to right, #00ffe0, #007777);
+form#scan-form input[type="text"],
+form#scan-form input[type="number"] {
+    padding: 0.5rem;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #00ffcc55;
+    background-color: #1a1a2a;
+    color: #00ffcc;
+    font-family: monospace;
+}
+
+form#scan-form label {
+    font-size: 0.9rem;
+    color: #ccccff;
+}
+
+form#scan-form button {
+    background-color: #00ffcc;
+    color: #0f0f1f;
+    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 8px;
-    color: #000;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 10px #00ffe0;
-    transition: 0.3s;
+    transition: background 0.2s ease;
 }
 
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #00ffe0;
+form#scan-form button:hover {
+    background-color: #00ffaa;
 }
 
-/* Scan output */
-.result-box {
-    margin-top: 2rem;
+.status {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.result-table-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.result-card {
     background-color: #111122;
     border: 1px solid #00ffcc55;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 1rem;
-    width: 80%;
-    max-width: 800px;
-    height: 300px;
-    overflow-y: auto;
-    font-family: monospace;
-    color: #00ffcc;
-    white-space: pre-wrap;
     box-shadow: 0 0 15px #00ffcc33;
 }
 
-/* Scan status */
-.status {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #ffaa00;
+.result-card h3 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    color: #00ffe0;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    font-size: 0.8rem;
-    padding-top: 1rem;
-    border-top: 1px solid #00ffcc33;
-    color: #6666aa;
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid #00ffcc33;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    font-family: monospace;
+}
+
+.result-table th {
+    background-color: #222233;
+    color: #00ffcc;
+}
+
+.result-table td {
+    color: #ccffcc;
+}
+
+.analysis {
+    background-color: #1b1b2b;
+    border: 1px solid #00ffaa55;
+    border-radius: 10px;
+    padding: 1rem;
+    color: #ccffdd;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    margin-top: 2rem;
+    box-shadow: 0 0 12px #00ffaa22;
+}
+
+.analysis h3 {
+    margin-top: 0;
+    color: #00ffaa;
+    font-size: 1.1rem;
+}
+
+button#export-btn {
+    background-color: #00ffaa;
+    color: #1a1a2a;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button#export-btn:hover {
+    background-color: #00ddaa;
+}
+
+.history-link {
+    color: #ffaa00; /* 想要的颜色，比如橙色 */
+    text-decoration: none; /* 如果想去掉默认的下划线 */
+}
+
+.history-link:hover {
+    color: #ffdd55; /* 悬停时颜色 */
 }

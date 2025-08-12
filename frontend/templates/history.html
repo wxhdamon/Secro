@@ -1,0 +1,55 @@
+<!-- frontend/templates/history.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan History - Secro Scan</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>📜 Scan History</h1>
+        <div style="text-align:center; margin-bottom:1rem;">
+            <a href="/"  class="history-link">⬅ Back to Dashboard</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="result-table-container">
+            {% if results and results|length > 0 %}
+                {% for entry in results %}
+                    <div class="result-card">
+                        <h3>Scan Timestamp: {{ entry.timestamp }}</h3>
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>IP</th>
+                                    <th>Port</th>
+                                    <th>Status</th>
+                                    <th>Protocol</th>
+                                    <th>Service</th>
+                                    <th>Banner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in entry.result %}
+                                <tr>
+                                    <td>{{ item.ip }}</td>
+                                    <td>{{ item.port }}</td>
+                                    <td>{{ item.status }}</td>
+                                    <td>{{ item.protocol }}</td>
+                                    <td>{{ item.service }}</td>
+                                    <td>{{ item.banner or '' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p style="text-align:center; color:#ffaaaa">No historical records found.</p>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

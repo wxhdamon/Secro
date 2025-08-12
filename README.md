@@ -1,19 +1,24 @@
-# Secro Security Platform
+Secro：多语言集成的网络服务扫描与分析工具
 
-Lightweight enterprise tool for network scanning and log analysis.
+项目简介
+Secro 是一个结合Python、Perl和JavaScript的网络安全工具，用于扫描指定主机的开放端口、识别服务，并生成初步的服务分析报告。 
+本项目旨在展示三种脚本语言的协同工作流程：
+Python处理扫描任务，Perl负责文本分析，JavaScript实现前端界面与交互。
+
+主流程：前端发送扫描请求 --> Flask校验授权 --> 调用扫描模块 --> 保存结果 --> 调用Perl脚本分析 --> 返回扫描和分析结果。
 
 #快速开始
-1. 解压后进入目录
+1.进入目录
 pip install rsa(首次)
 
-2. 生成密钥（第一次）
+2.生成密钥（第一次）
 openssl genrsa -out private.pem 2048
 openssl rsa -in private.pem -pubout -out public.pem
 
-3. 生成 license 文件
+3.生成 license 文件
 python3 scripts/license_generator.py
 
-4. 启动服务
+4.启动服务
 docker-compose up --build
 
 5.访问页面 localhost:8080
@@ -34,9 +39,9 @@ Docker 一键部署
 
 2. POST /api/scan
 描述：执行一次网络端口扫描任务。
-授权校验：请求前会自动验证本地 license.lic 是否存在、合法、未过期。
+授权校验：请求前会自动验证本地license.lic是否存在、合法、未过期。
 请求参数：无（V1 默认扫描 127.0.0.1 的固定端口）
-未来可扩展：支持 POST 提交自定义目标地址、端口范围等
+未来可扩展：支持POST提交自定义目标地址、端口范围等
 
 逻辑流程：
 检查 license
@@ -67,15 +72,15 @@ Docker 一键部署
 Secro
 ├── backend                         # 后端服务目录（基于 Flask 实现）
 │   ├── app                         # 后端核心代码
-│   │   ├── __init__.py             # Flask 应用创建入口，注册，初始化 DB
+│   │   ├── __init__.py             # 集中初始化Flask应用及其组件，如创建入口，注册，初始化DB等
+│   │   ├── analyze.pl              # 对扫描数据做简单统计分析
 │   │   ├── base.py                 # SQLAlchemy 基类定义（用于创建模型）
 │   │   ├── config.py               # 数据库连接配置，支持环境变量
 │   │   ├── db.py                   # 数据库引擎与会话管理器初始化
 │   │   ├── license.py              # License 验证逻辑（基于 RSA 签名）
-│   │   ├── log_parser.pl           # Perl 脚本：日志扫描器（检测 SSH 登录失败等）
-│   │   ├── models.py               # SQLAlchemy 数据模型定义（如 ScanResult）
-│   │   ├── routes.py               # 路由与 API 定义（如 /api/scan）
-│   │   └── scanner.py              # 网络端口扫描逻辑（基于 socket）
+│   │   ├── models.py               # SQLAlchemy数据模型定义，如ScanResult表、save_scan_result(data)函数-保存扫描结果，load_scan_history(limit=20)加载扫描结果
+│   │   ├── routes.py               # 路由与API定义（Flask蓝图），包括前端页面的访问路由（如/、/history），后端API接口接收前端请求，调用扫描逻辑、返回JSON或HTML页面
+│   │   └── scanner.py              # 网络端口扫描逻辑（基于socket）
 │   ├── Dockerfile                 # 构建后端镜像的 Dockerfile
 │   └── requirements.txt           # 后端 Python 依赖列表
 ├── docker-compose.yml             # 整体容器编排文件（后端 + 数据库）
@@ -84,6 +89,7 @@ Secro
 │   │   ├── dashboard.js           # 控制扫描请求与结果显示的 JS 脚本
 │   │   └── styles.css             # 样式表
 │   └── templates
+│       └── history.html           # 扫描历史记录页面
 │       └── index.html             # 主界面 HTML 模板（Flask 使用 Jinja2 渲染）
 ├── LICENSE                        # 开源许可文件
 ├── license.lic                    # 授权 License 文件（包含签名和过期时间）

@@ -3,27 +3,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Scanbox Security Platform</title>
+    <title>Secro Scan Dashboard</title>
     <link rel="stylesheet" href="/static/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>SCANBOX</h1>
-            <p class="subtitle">Cyber Threat Intel & Detection Dashboard</p>
-        </header>
+    <header>
+        <h1>⚡ Secro Scan Dashboard</h1>
+    </header>
 
-        <main>
-            <button onclick="runScan()">⚡ Start Network Scan</button>
-            <div id="scan-status" class="status"></div>
-            <pre id="result" class="result-box">🔍 Awaiting scan...</pre>
-        </main>
-        
-        <footer>
-            <p>&copy; 2025 Scanbox Security Inc.</p>
-        </footer>
-    </div>
+    <main>
+        <form id="scan-form">
+            <input type="text" id="target" placeholder="Target IP or CIDR" value="127.0.0.1" required />
+            <input type="text" id="ports" placeholder="Ports (e.g. 22,80,1000-2000)" value="22" required />
+            <input type="number" id="threads" placeholder="Threads" value="100" min="1" required />
+            <label>
+                <input type="checkbox" id="banner" /> Enable Banner Grabbing
+            </label>
+            <label>
+                <input type="checkbox" id="udp" /> Enable UDP Scan
+            </label>
+            <button type="submit">⚡ 开始扫描</button>
+        </form>
+
+        <div style="text-align:center; margin-bottom:1rem;">
+            <a href="/history" class="history-link">📜 浏览扫描记录</a>
+        </div>
+
+        <div id="scan-status" class="status">Awaiting scan...</div>
+        <div id="scan-results" class="result-table-container"></div>
+        <!-- 导出报告按钮 -->
+        <div style="text-align:center; margin-top:1rem;">
+            <button id="export-btn" style="display: none;">📄 导出分析报告</button>
+        </div>
+    </main>
 
     <script src="/static/dashboard.js"></script>
 </body>
