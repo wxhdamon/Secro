@@ -25,7 +25,8 @@ docker-compose up --build
 
 一、相关功能
 网络端口扫描器（Python）
-SSH 日志分析入侵检测（Perl）
+扫描结果分析统计
+/*SSH 日志分析入侵检测（Perl）*/
 扫描结果入库（PostgreSQL + SQLAlchemy）
 Web 仪表盘（HTML + JS）
 授权机制（.lic 文件 + RSA 签名验证）
