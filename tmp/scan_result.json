@@ -1,0 +1,74 @@
+[
+  {
+    "ip": "192.168.1.10",
+    "port": 80,
+    "status": "open",
+    "protocol": "tcp",
+    "service": "http",
+    "banner": "Apache/2.4.46 (Ubuntu)"
+  },
+  {
+    "ip": "192.168.1.10",
+    "port": 22,
+    "status": "open",
+    "protocol": "tcp",
+    "service": "ssh",
+    "banner": "OpenSSH 8.2p1 Ubuntu-4ubuntu0.5"
+  },
+  {
+    "ip": "192.168.1.11",
+    "port": 443,
+    "status": "closed",
+    "protocol": "tcp",
+    "service": "https",
+    "banner": "nginx"
+  },
+  {
+    "ip": "192.168.1.12",
+    "port": 21,
+    "status": "open",
+    "protocol": "tcp",
+    "service": "ftp",
+    "banner": "vsftpd 3.0.3"
+  },
+  {
+    "ip": "192.168.1.13",
+    "port": 3306,
+    "status": "open",
+    "protocol": "tcp",
+    "service": "mysql",
+    "banner": "MySQL 8.0.23"
+  },
+  {
+    "ip": "192.168.1.14",
+    "port": 25,
+    "status": "Filtered",
+    "protocol": "tcp",
+    "service": "smtp",
+    "banner": "Postfix"
+  },
+  {
+    "ip": "192.168.1.15",
+    "port": 8080,
+    "status": "OPEN",
+    "protocol": "tcp",
+    "service": null,
+    "banner": "Tomcat"
+  },
+  {
+    "ip": "192.168.1.16",
+    "port": 123,
+    "status": "open",
+    "protocol": "udp",
+    "service": "ntp",
+    "banner": "NTP v4"
+  },
+  {
+    "ip": "192.168.1.17",
+    "port": 5000,
+    "status": "open",
+    "protocol": "tcp",
+    "service": "自定义服务",
+    "banner": "Custom Banner v1.0"
+  }
+]
