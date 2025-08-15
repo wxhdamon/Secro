@@ -31,6 +31,14 @@
     "service": "ftp",
     "banner": "vsftpd 3.0.3"
   },
+    {
+    "ip": "192.168.1.1",
+    "port": 22,
+    "status": "open",
+    "protocol": "tcp",
+    "service": "ssh",
+    "banner": "OpenSSH 8.2p1 Ubuntu-4ubuntu0.5"
+  },
   {
     "ip": "192.168.1.13",
     "port": 3306,
