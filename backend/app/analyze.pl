@@ -12,12 +12,12 @@ if (@ARGV != 2) {
 }
 my ($input_file, $output_file) = @ARGV;
 
-# 读取 JSON 文件
+# 读取JSON文件
 open(my $INPUT, '<:encoding(UTF-8)', $input_file) or die "can't open $input_file: $!\n";
 my $json_string = do { local $/; <$INPUT> };  # 读取整个文件内容
 close($INPUT) or die "can't close $input_file: $!\n";
 
-# 解码 JSON
+# 解码JSON
 my $data = eval { decode_json(encode("UTF-8", $json_string)) };
 die "JSON decode failure: $@\n" if $@;
 die "the input JSON must be an array\n" unless ref($data) eq 'ARRAY';
